@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
+import { start } from './obstacle.service';
 
-export interface cords{
+export interface Cords{
   xoffset:number,
   yoffset:number
 }
 
-export interface dimensions{
+export interface Dimensions{
   height:number,
   width:number
 }
 
+export let dinoCords:Cords = {xoffset:0,yoffset:0};
+export let dinoDms: Dimensions = {height:30,width:20};
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +20,10 @@ export interface dimensions{
 export class DinoService {
 
   bottom:number = 0;
-  dinoDms: dimensions = {height:30,width:20};
   timer:{
     jump:number,
     duck:number
-  } = { jump:23, duck:15 };
+  } = { jump:20, duck:15 };
 
   motion:{
     jump:boolean,
@@ -36,7 +38,7 @@ export class DinoService {
     Properties it need to have
     1. Bottom (that will make it jump)
     2. dimentions
-    3. cords
+    3. Cords
 
     Actions related to Dino :
     1. Jump
@@ -54,26 +56,28 @@ export class DinoService {
 
     let upTime = setInterval(()=>{
 
-      if(this.bottom>50){
+      if(this.bottom>70 || !start){
         // clearing interval when reaches a certain height
         clearInterval(upTime);
 
         // setting an interval that move downs the dino
         let downTime = setInterval(()=>{
 
-          if(this.bottom<=5){
+          if(this.bottom<=5 || !start){
             clearInterval(downTime);
             this.motion.jump = false;
           }
 
           // decrease in bottom prop
           this.bottom -=5;
+          dinoCords.yoffset += 5;
         },this.timer.jump);
       }
 
       this.motion.jump = true;
       // increasing bottom prop
       this.bottom += 10;
+      dinoCords.yoffset -= 10;
     },this.timer.jump);
   }
 
@@ -84,21 +88,23 @@ export class DinoService {
 
     let downTime = setInterval(()=>{
 
-      if(this.dinoDms.height == 8){
+      if(dinoDms.height == 8 || !start){
         clearInterval(downTime);
 
         let upTime = setInterval(()=>{
-          if(this.dinoDms.height == 28){
+          if(dinoDms.height == 28 || !start){
             clearInterval(upTime);
             this.motion.duck = false;
           }
-          this.dinoDms.height += 2;
+          dinoDms.height += 2;
+          dinoCords.yoffset -= 2;
         },this.timer.duck);
 
       }
 
       this.motion.duck = true;
-      this.dinoDms.height -= 2;
+      dinoDms.height -= 2;
+      dinoCords.yoffset += 2;
     },this.timer.duck);
 
   }

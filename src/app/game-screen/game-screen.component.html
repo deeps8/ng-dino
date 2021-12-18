@@ -8,16 +8,16 @@
     </div> -->
     <div class="game">
       <div class="screen">
-        <div class="platform">
+        <div class="platform" #platform>
           <div  class="dino" #dino
                 [style.bottom.px]="ds.bottom"
-                [style.height.px]="ds.dinoDms.height"
+                [style.height.px]="dinoDms.height"
                 ></div>
 
           <div  class="obs" *ngFor="let i of obs"
                             [style.height.px]="i.height"
                             [style.width.px]="i.width"
-                            [style.left.%]="i.left"></div>
+                            [style.left.px]="i.left"></div>
         </div>
       </div>
     </div>

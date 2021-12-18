@@ -15,6 +15,7 @@
         position: relative;
         border: 1px solid black;
         .platform {
+          overflow: hidden;
           background-color: #f5acac;
           height: 50%;
           width: 100%;
@@ -26,17 +27,13 @@
             height: 30px;
             width: 20px;
             position: absolute;
-            bottom: 0;
+            bottom: 0px;
             left: 50px;
           }
           .obs{
             background-color: red;
-            // height: 30px;
-            // width: 20px;
             position: absolute;
             bottom: 0;
-            // left: 50px;
-            left:100%;
           }
         }
       }
