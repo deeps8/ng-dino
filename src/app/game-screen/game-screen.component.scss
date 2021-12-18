@@ -1,0 +1,45 @@
+.container {
+  align-items: unset;
+  .game-screen {
+    .op-btns {
+      display: flex;
+      flex-direction: row;
+      button {
+        margin-right: 15px;
+      }
+    }
+    .game {
+      .screen {
+        height: 50vh;
+        min-width: 55vw;
+        position: relative;
+        border: 1px solid black;
+        .platform {
+          background-color: #f5acac;
+          height: 50%;
+          width: 100%;
+          position: absolute;
+          top: 25%;
+          box-shadow: 0px 4px 0px black;
+          .dino {
+            background-color: green;
+            height: 30px;
+            width: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+          }
+          .obs{
+            background-color: red;
+            // height: 30px;
+            // width: 20px;
+            position: absolute;
+            bottom: 0;
+            // left: 50px;
+            left:100%;
+          }
+        }
+      }
+    }
+  }
+}

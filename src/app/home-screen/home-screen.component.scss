@@ -1,0 +1,26 @@
+.container{
+  .home-screen{
+    .entry-form{
+      form{
+        margin: 10% 0;
+        display: flex;
+        flex-direction: column;
+        .form-group{
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          label{
+            font-size: smaller;
+            margin-bottom: 5px;
+          }
+          .error-msg{
+            position: absolute;
+            bottom: 5px;
+            font-size: smaller;
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}

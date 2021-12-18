@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="home-screen" >
+    <h2>Ng-Dino</h2>
+    <div class="entry-form">
+      <form (ngSubmit)="onEnter()" [formGroup]="dinoForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" required autocomplete="off" name="username" formControlName="username">
+          <div class="error-msg" *ngIf="dinoForm.get('username')?.hasError('required') && dinoForm.get('username')?.touched">
+            required
+          </div>
+          <div class="error-msg" *ngIf="dinoForm.get('username')?.hasError('minlength') && dinoForm.get('username')?.touched">
+            too small
+          </div>
+        </div>
+        <button type="submit" [disabled]="dinoForm.invalid">
+          Enter
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
