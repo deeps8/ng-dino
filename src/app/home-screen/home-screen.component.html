@@ -1,10 +1,23 @@
 <div class="container">
   <div class="home-screen" >
-    <h2>Ng-Dino</h2>
+    <div class="logo">
+      <img src="../../assets/dino.png" alt="dino">
+      <h1>Ng-Dino</h1>
+    </div>
+    <div class="rules">
+      <p>Dodge the obstacles by either Jumping or Ducking.</p>
+        <p class="inst">
+          Press <img src="../../assets/enter.png" alt=""> "Enter" to start or restart the game. <br>
+          Press <img src="../../assets/space.png" alt=""> "Space" <span> - or - </span> <img src="../../assets/arrow-up.png" alt=""> "Arrow Up" to Jump. <br>
+          Press <img src="../../assets/arrow-down.png" alt=""> "Arrow Down" to Duck.
+        </p>
+        <br>
+        <!-- <p>Enter your Username and Play.</p> -->
+    </div>
     <div class="entry-form">
       <form (ngSubmit)="onEnter()" [formGroup]="dinoForm">
         <div class="form-group">
-          <label>Username</label>
+          <label>Enter Username</label>
           <input type="text" required autocomplete="off" name="username" formControlName="username">
           <div class="error-msg" *ngIf="dinoForm.get('username')?.hasError('required') && dinoForm.get('username')?.touched">
             required
@@ -14,7 +27,7 @@
           </div>
         </div>
         <button type="submit" [disabled]="dinoForm.invalid">
-          Enter
+          Play
         </button>
       </form>
     </div>

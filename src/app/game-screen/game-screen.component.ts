@@ -1,7 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DinoService } from '../services/dino.service';
-import { ObstacleService } from '../services/obstacle.service';
+import { Dimensions, DinoService } from '../services/dino.service';
+import { Obstacle, ObstacleService, score, start } from '../services/obstacle.service';
 import { obs,platCords,platDms } from '../services/obstacle.service';
 import { dinoCords,dinoDms } from '../services/dino.service';
 
@@ -14,8 +14,9 @@ export class GameScreenComponent implements OnInit{
 
   username:string | null = null;
   start:boolean = false;
-  obs = obs;
-  dinoDms = dinoDms;
+  obs:Obstacle[]=obs;
+  dinoDms:Dimensions = dinoDms;
+  score:number[] = score;
 
   @ViewChild('dino') dinoRef!: ElementRef;
   @ViewChild('platform') platformRef!: ElementRef;
@@ -33,24 +34,25 @@ export class GameScreenComponent implements OnInit{
 
   }
 
-  @HostListener('document:keyup', ['$event'])
+  @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(event);
+    // console.log(event);
     switch (event.key) {
       case ' ':
-      case 'ArrowUp':{
-        // start game if not started yet OR jump the character.
-        if(this.start)
-          this.ds.jump();
-        else
-          this.startGame();
-      }
-      break;
+      case 'ArrowUp':
+            if(this.ob.playing)
+              this.ds.jump();
+            break;
+
+      case 'Enter':
+            if(!this.ob.playing)
+              this.startGame();
+            break;
 
       case 'ArrowDown':{
-        this.ds.duck();
-      }
-      break;
+              this.ds.duck();
+            }
+            break;
     }
   }
 
@@ -61,19 +63,23 @@ export class GameScreenComponent implements OnInit{
   // start or restart the game on spacebar button.
   // start : clear all the obstacle and score and other stuff.
   startGame(){
+    this.ds.bottom = 0;
+    dinoDms.height = 30;
+    obs.splice(0,obs.length);
     let {x, y} = this.dinoRef.nativeElement.getBoundingClientRect();
     // console.log({x,y});
     dinoCords.xoffset = 50;
-    dinoCords.yoffset = y;
+    dinoCords.yoffset = 328;
+
+    console.log(dinoCords);
 
     let plCords = this.platformRef.nativeElement.getBoundingClientRect();
-    platCords.xoffset = plCords.x + plCords.width;
-    platCords.yoffset = plCords.y + plCords.height;
+    platCords.xoffset = Math.floor(plCords.x + plCords.width);
+    platCords.yoffset = Math.floor(plCords.y + plCords.height);
 
-    platDms.width = plCords.width;
-    platDms.height = plCords.height;
+    platDms.width = Math.floor(plCords.width);
+    platDms.height = Math.floor(plCords.height);
 
-    this.start = true;
     this.ob.spawning();
   }
 

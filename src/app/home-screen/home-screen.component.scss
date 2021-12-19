@@ -1,5 +1,16 @@
 .container{
   .home-screen{
+    .rules{
+      p{
+        line-height: 30px;
+        img{
+          width: 30px;
+        }
+        span{
+          margin: 0 10px;
+        }
+      }
+    }
     .entry-form{
       form{
         margin: 10% 0;
@@ -20,6 +31,17 @@
             color: red;
           }
         }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container{
+    .home-screen{
+      .entry-form{
+        width: 50%;
+        // margin: 0 auto;
       }
     }
   }

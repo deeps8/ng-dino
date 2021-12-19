@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { start } from './obstacle.service';
+import { obs, start } from './obstacle.service';
 
 export interface Cords{
   xoffset:number,
@@ -23,7 +23,7 @@ export class DinoService {
   timer:{
     jump:number,
     duck:number
-  } = { jump:20, duck:15 };
+  } = { jump:20, duck:20 };
 
   motion:{
     jump:boolean,
@@ -88,7 +88,7 @@ export class DinoService {
 
     let downTime = setInterval(()=>{
 
-      if(dinoDms.height == 8 || !start){
+      if(dinoDms.height == 4 || !start){
         clearInterval(downTime);
 
         let upTime = setInterval(()=>{

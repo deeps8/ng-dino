@@ -1,5 +1,24 @@
 .container {
   align-items: unset;
+  h2{
+    text-transform: capitalize;
+  }
+  .rules{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    img{
+      width: 20px;
+    }
+    .score{
+      margin-left: auto;
+      text-align: right;
+      p{
+        margin: 5px 0px;
+        font-weight: 500;
+      }
+    }
+  }
   .game-screen {
     .op-btns {
       display: flex;
@@ -10,20 +29,22 @@
     }
     .game {
       .screen {
-        height: 50vh;
+        height: 200px;
         min-width: 55vw;
         position: relative;
-        border: 1px solid black;
         .platform {
           overflow: hidden;
-          background-color: #f5acac;
-          height: 50%;
+          background-color: white;
+          height: 100%;
           width: 100%;
           position: absolute;
-          top: 25%;
+          top: 0px;
+          border-radius: 5px 5px 0px 0px;
           box-shadow: 0px 4px 0px black;
           .dino {
-            background-color: green;
+            background-color: #28e94f;
+            outline: 2px solid #1a9f35;
+            border-radius: 2px;
             height: 30px;
             width: 20px;
             position: absolute;
@@ -31,12 +52,44 @@
             left: 50px;
           }
           .obs{
-            background-color: red;
+            background-color: black;
+            border-radius: 2px;
             position: absolute;
             bottom: 0;
           }
         }
       }
     }
+    .keypad{
+      display: none;
+    }
+    }
+
+
+}
+
+
+@media (max-width: 768px) {
+  .container{
+    .game-screen{
+      .keypad{
+        display: block !important;
+        .keypad-btn{
+          display: flex;
+          margin: 20px -10px;
+          flex-direction: column;
+          button{
+            margin: 10px 10px;
+          }
+          div{
+            display: flex;
+            height: 150px;
+            button{
+              width: 100%;
+            }
+          }
+        }
+      }
   }
+    }
 }
