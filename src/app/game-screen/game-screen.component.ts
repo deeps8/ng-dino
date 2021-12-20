@@ -30,7 +30,7 @@ export class GameScreenComponent implements OnInit{
     // retrieving the data passed from route
     this.username = this.route.snapshot.paramMap?.get('user');
     if(this.username === null || this.username==""){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
 
   }

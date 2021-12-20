@@ -2,7 +2,7 @@
 
 Build Dinosaur Game using Angular. 
 
-# Click on link to play : [Ng-Dino](https://deeps8.github.io/ng-dino/home)
+# Click on link to play : [Ng-Dino](https://deeps8.github.io/ng-dino)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
 

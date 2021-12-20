@@ -9,12 +9,12 @@ const routes: Routes = [
     component:GameScreenComponent
   },
   {
-    path:'home',
+    path:'',
     component:HomeScreenComponent
   },
   {
     path:'**',
-    redirectTo:'home'
+    redirectTo:''
   }
 ];
 

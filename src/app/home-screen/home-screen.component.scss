@@ -1,30 +1,30 @@
-.container{
-  .home-screen{
-    .rules{
-      p{
+.container {
+  .home-screen {
+    .rules {
+      p {
         line-height: 30px;
-        img{
+        img {
           width: 30px;
         }
-        span{
+        span {
           margin: 0 10px;
         }
       }
     }
-    .entry-form{
-      form{
+    .entry-form {
+      form {
         margin: 10% 0;
         display: flex;
         flex-direction: column;
-        .form-group{
+        .form-group {
           position: relative;
           display: flex;
           flex-direction: column;
-          label{
+          label {
             font-size: smaller;
             margin-bottom: 5px;
           }
-          .error-msg{
+          .error-msg {
             position: absolute;
             bottom: 5px;
             font-size: smaller;
@@ -33,13 +33,19 @@
         }
       }
     }
+    .socials {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #b9b8b8;
+      padding-top: 15px;
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .container{
-    .home-screen{
-      .entry-form{
+  .container {
+    .home-screen {
+      .entry-form {
         width: 50%;
         // margin: 0 auto;
       }
