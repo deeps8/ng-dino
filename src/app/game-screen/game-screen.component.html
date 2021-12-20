@@ -1,16 +1,16 @@
 <div class="container">
   <div class="game-screen">
     <div class="logo">
-      <img src="../../assets/dino.png" alt="dino">
+      <img src="assets/dino.png" alt="dino">
       <h2> {{username}}, Let's play</h2>
       <button style="margin-left: auto;margin-top: 20px;" [routerLink]="['/home']" >Home</button>
     </div>
     <div class="rules">
         <p *ngIf="!ob.playing && score[0]==0">
-          Press <img src="../../assets/enter.png" alt=""> "Enter" to play.
+          Press <img src="assets/enter.png" alt=""> "Enter" to play.
         </p>
         <p *ngIf="!ob.playing && score[0]>0">
-          Game Over <img src="../../assets/dead.png" alt=""> You died.
+          Game Over <img src="assets/dead.png" alt=""> You died.
         </p>
         <div class="score">
           <p>Highest Score : <strong> {{score[1]}} </strong></p>
