@@ -27,6 +27,7 @@ export class GameScreenComponent implements OnInit{
               public ob:ObstacleService,
               private router:Router) {
 
+    // retrieving the data passed from route
     this.username = this.route.snapshot.paramMap?.get('user');
     if(this.username === null || this.username==""){
       this.router.navigate(['/home']);
@@ -34,9 +35,11 @@ export class GameScreenComponent implements OnInit{
 
   }
 
+
+  // listening to the key down evnets
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    // console.log(event);
+
     switch (event.key) {
       case ' ':
       case 'ArrowUp':
@@ -63,15 +66,13 @@ export class GameScreenComponent implements OnInit{
   // start or restart the game on spacebar button.
   // start : clear all the obstacle and score and other stuff.
   startGame(){
+
+    obs.splice(0,obs.length);
     this.ds.bottom = 0;
     dinoDms.height = 30;
-    obs.splice(0,obs.length);
-    let {x, y} = this.dinoRef.nativeElement.getBoundingClientRect();
-    // console.log({x,y});
     dinoCords.xoffset = 50;
     dinoCords.yoffset = 328;
 
-    console.log(dinoCords);
 
     let plCords = this.platformRef.nativeElement.getBoundingClientRect();
     platCords.xoffset = Math.floor(plCords.x + plCords.width);
@@ -82,10 +83,6 @@ export class GameScreenComponent implements OnInit{
 
     this.ob.spawning();
   }
-
-  collision(){
-  }
-
 
 
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { obs, start } from './obstacle.service';
 
+// interfaces for coordinates and dimensions
+
 export interface Cords{
   xoffset:number,
   yoffset:number
@@ -13,6 +15,8 @@ export interface Dimensions{
 
 export let dinoCords:Cords = {xoffset:0,yoffset:0};
 export let dinoDms: Dimensions = {height:30,width:20};
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,8 +52,7 @@ export class DinoService {
   */
 
   /**
-    M1 : Jump dino by adding the px to bottom stype property of it. [Better method]
-    M2 : Jump dino by subtracting the y offset of the dino.
+    Jump dino by adding the px to bottom stype property of it. [Better method]
    */
   jump(){
     if(this.motion.jump) return;
@@ -80,6 +83,7 @@ export class DinoService {
       dinoCords.yoffset -= 10;
     },this.timer.jump);
   }
+
 
 
   duck(){
